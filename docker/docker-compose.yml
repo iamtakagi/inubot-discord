@@ -5,8 +5,11 @@ services:
     image: inubot-discord:latest
     build:
       context: ../
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     volumes:
+      - type: bind
+        source: ../src
+        target: /src
       - type: bind
         source: ../data
         target: /data
