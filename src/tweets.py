@@ -37,7 +37,7 @@ def fetch_tweets() -> None:
     with open("data/tweets.txt", "w") as f:
         f.write("\n".join(tweets))
 
-def load_tweets() -> str or list: 
+def load_tweets() -> (str or list): 
     if not os.path.isfile("data/tweets.txt"):
         return []
     with open("data/tweets.txt", "r") as f:
