@@ -27,7 +27,7 @@ def fetch_tweets() -> None:
             for tweet in tw if "http" not in tweet.text and "@" not in tweet.text]
 
     print("done")
-    print(f"{len(tweets)}tweets")
+    print(f"{len(tweets)} tweets")
 
     if os.path.isfile("data/tweets.txt"):
         with open("data/tweets.txt", mode='r+') as current:
