@@ -7,7 +7,7 @@ def fetch_tweets() -> None:
     max_id = None
 
     while True:
-        tw = ""
+        tw = ''
         if max_id:
             try:
                 tw = API.user_timeline(
@@ -23,32 +23,32 @@ def fetch_tweets() -> None:
         if len(tw) < 1:
             break
         max_id = tw[-1].id - 1
-        [tweets.append(tweet.text.replace("\n", ""))
-            for tweet in tw if "http" not in tweet.text and "@" not in tweet.text]
+        [tweets.append(tweet.text.replace('\n', ''))
+            for tweet in tw if 'http' not in tweet.text and '@' not in tweet.text]
 
-    print("done")
-    print(f"{len(tweets)} tweets")
+    print('done')
+    print(f'{len(tweets)} tweets')
 
-    if os.path.isfile("data/tweets.txt"):
-        with open("data/tweets.txt", mode='r+') as current:
+    if os.path.isfile('data/tweets.txt'):
+        with open('data/tweets.txt', mode='r+') as current:
             current.truncate(0)
             current.close()
 
-    with open("data/tweets.txt", "w") as f:
-        f.write("\n".join(tweets))
+    with open('data/tweets.txt', 'w') as f:
+        f.write('\n'.join(tweets))
 
 def load_tweets() -> (str or list): 
-    if not os.path.isfile("data/tweets.txt"):
+    if not os.path.isfile('data/tweets.txt'):
         return []
-    with open("data/tweets.txt", "r") as f:
+    with open('data/tweets.txt', 'r') as f:
         tweets = f.read()
     return tweets
 
 
 def load_tweets_line() -> list[str]: 
-    if not os.path.isfile("data/tweets.txt"):
+    if not os.path.isfile('data/tweets.txt'):
         return []
-    with open("data/tweets.txt", "r") as f:
+    with open('data/tweets.txt', 'r') as f:
         tweets = [s.strip() for s in f.readlines()]
         tweets = list(filter(None, tweets))
         tweets = [t.replace(' ', '') for t in tweets]
