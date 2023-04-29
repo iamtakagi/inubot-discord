@@ -1,2 +1,2 @@
 tweepy
-discord-py-interactions
+discord-py-interactions==4.4.1
